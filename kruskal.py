@@ -1,7 +1,9 @@
 class Kruskal:
-    def get_mst_from_edges(edges):
+    def get_mst_from_edges(input_edges):
         included_nodes = []  # Вершини, які вже включені в minimal spanning tree
         minimal_spanning_tree = []  # Початковий мінімальний minimal spanning tree
+        edges = input_edges.copy()  # Копіюємо ребра графа
+        edges.sort(key=lambda x: x[2])  # Сортуємо ребра графа за зростанням ваги
 
         for edge in edges:
             i, j, weight = edge
@@ -30,9 +32,6 @@ class Kruskal:
                 if adjacency_matrix[i][j] != 0:
                     edges.append((i, j, adjacency_matrix[i][j]))
 
-        # Сортуємо ребра графа за зростанням ваги
-        edges.sort(key=lambda x: x[2])
-
         return Kruskal.get_mst_from_edges(edges)
 
     def get_mts_from_adjacency_list(adjacency_list):
@@ -41,8 +40,5 @@ class Kruskal:
         for node, adjacents in adjacency_list.items():
             for adjacent, weight in adjacents.items():
                 edges.append((node, adjacent, weight))
-
-        # Сортуємо ребра графа за зростанням ваги
-        edges.sort(key=lambda x: x[2])
 
         return Kruskal.get_mst_from_edges(edges)

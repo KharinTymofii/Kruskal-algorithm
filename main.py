@@ -25,7 +25,7 @@ with open("results.csv", "w", newline="") as csvfile:
     writer.writeheader()
 
     # Генеруємо графи та рахуємо метрики
-    for density in [round(0.5 + 0.1 * i, 1) for i in range(5)]:
+    for density in [round(0.5 + 0.1 * i, 1) for i in range(6)]:
         for num_vertices in range(20, 201, 20):
             total_time_matrix_ms = 0
             total_time_adjacency_list_ms = 0
