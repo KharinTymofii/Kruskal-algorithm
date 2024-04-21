@@ -31,10 +31,11 @@ with open("results.csv", "w", newline="") as csvfile:
             total_time_adjacency_list_ms = 0
             total_edges = 0
 
-            # Виконуємо алгоритм п'ять разів
-            for _ in range(5):
+            # Виконуємо алгоритм 20 разів для кожного значення num_vertices, density
+            for _ in range(20):
                 graph = generate_graph(num_vertices, density)
 
+                # Вимірюємо час виконання алгоритму для матриці суміжності
                 start_time_adjacency_list = time.time_ns()
                 min_spanning_tree_adjacency_list = Kruskal.get_mts_from_adjacency_list(
                     graph.get_adjacency_list()
@@ -52,7 +53,7 @@ with open("results.csv", "w", newline="") as csvfile:
 
                 total_time_matrix_ms += execution_matrix_time_ms
 
-
+                #  Вимірюємо час виконання алгоритму для списку суміжності
                 execution_adjacency_list_time_ms = (
                     end_time_adjacency_list - start_time_adjacency_list
                 ) / 1_000_000
