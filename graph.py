@@ -53,6 +53,9 @@ class Graph:
             for adjacent, weight in adjacents.items(): # цикл проходиться через кожне суміжне ребро та його вагу.
                 matrix[node_index[node]][node_index[adjacent]] = weight # вага ребер розміщується у відповідному місці матриці
         return matrix
+    
+    def get_adjacency_list(self):
+        return self.graph_dict
 
     def display(self): # поточне представлення графа у вигляді словника
         return self.graph_dict
